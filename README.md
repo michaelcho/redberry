@@ -1,0 +1,60 @@
+# Redberry CMS
+
+Redberry is a Blueprint for adding CMS functionality into your Flask app. 
+It is intended to be registered into an existing Flask app, not as a standalone application.
+
+## Installation
+`pip install redberry`
+
+## Usage
+```
+from redberry.blueprint import cms
+
+# Pass a SQLAlchemy object as db
+app.config['redberry.config'] = {'db': db}
+
+# Set the url_prefix for where your CMS should be served from
+app.register_blueprint(cms, url_prefix='/blog')
+
+....
+
+# Ensure your user instances implement an is_admin() method
+# eg models/user.py
+class User:
+    def is_admin(self):
+        return self.role == 'ADMIN'
+```
+
+When you start your app, Redberry checks that any required database tables are present. 
+If not, it will run migrations and create a sample post and category.
+
+You can now access the Redberry frontend at `/blog` (or whatever you entered as the url_prefix).
+
+## Admin Panel
+**Certain routes requires your user instance to be logged in and implement an `is_admin()` method.**
+
+Redberry ships with a basic admin panel for editing posts and categories. This is available at `/blog/admin`. 
+
+If your user is not logged in or `is_admin()` returns False, you will be redirected when trying 
+to access the admin panel.
+
+
+## Customizing
+Redberry templates are fully customizable.
+
+Templates can be modified by placing jinja files in your app's templates/redberry directory:
+- templates/redberry/index.html
+- templates/redberry/admin/index.html
+- and so on
+
+Only place template files here that you want to override, it is not necessary to copy all files.
+
+ 
+### Developer Notes
+To update the package:
+- bump VERSION
+- update CHANGELOG.txt
+- `python setup.py sdist`
+- `python setup.py bdist_wheel`
+- `twine upload dist/*`
+

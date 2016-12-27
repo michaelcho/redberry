@@ -1,0 +1,48 @@
+{% extends "redberry/_base.html" %}
+
+{% block content %}
+
+    <div class="jumbotron bg-gradient font-white margin-bottom-30">
+        <div class="container">
+            <div class="col-md-12">
+                <h1>Redberry CMS</h1>
+                <p class="font-muted">Deliciously simple blog functionality for your Flask app.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="red-posts-index" class="container">
+        {% if not posts %}
+            No posts yet.
+        {% endif %}
+
+        {% for post in posts %}
+            <div class="col-md-4">
+                <div class="red-post panel">
+                    <h3>
+                        <a href="{{ url_for('redberry.show_post', slug=post.slug) }}">{{ post.title }}</a>
+                    </h3>
+
+                    {% if post.categories %}
+                        <p>
+                            {% for category in post.categories %}
+                                <a class="label label-success" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">{{ category.title }}</a>
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+
+                    {{ post.summary() }}
+
+
+                    <a class="btn btn-primary btn-lg red-post-more" href="{{ url_for('redberry.show_post', slug=post.slug) }}">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+

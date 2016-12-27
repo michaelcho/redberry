@@ -1,0 +1,86 @@
+/*
+ * RedberryCMS v0.0.1
+ *
+ *
+ */
+
+
+/* ------- Fonts --------*/
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+/* ------- Defaults --------*/
+body, input, textarea {
+    color: #8492A6;
+    font: 300 16px "Dosis", sans-serif;
+    line-height: 1.5em;
+    background: #eff2f7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #3C4858;
+    font-weight: 400;
+}
+
+a:hover { text-decoration: none; }
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: #8492A6;
+    fill: #8492A6;
+    cursor: pointer;
+}
+    .icon:hover { stroke: #5F4586; fill: #5F4586; }
+
+.padding-10 { padding: 10px; }
+.margin-bottom-10 { margin-bottom: 10px; }
+.margin-bottom-20 { margin-bottom: 20px; }
+.margin-bottom-30 { margin-bottom: 30px; }
+.margin-bottom-40 { margin-bottom: 40px; }
+.margin-bottom-50 { margin-bottom: 50px; }
+
+.font-white { color: #fff; }
+.font-muted { color: #cdbfe3; }
+
+.breadcrumb { background: None; }
+
+.bg-primary { background-color: #5F4586; }
+
+.bg-gradient {
+    background: #5F4586;
+    background: -moz-linear-gradient(45deg, #5F4586 0%, #3B194E 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #F4586), color-stop(100%, #3B194E));
+    background: -webkit-linear-gradient(45deg, #5F4586 0%, #3B194E 100%);
+    background: -o-linear-gradient(45deg, #5F4586 0%, #3B194E 100%);
+    background: -ms-linear-gradient(45deg, #5F4586 0%, #3B194E 100%);
+    background: linear-gradient(45deg, #5F4586 0%, #3B194E 100%);
+}
+
+.flashes.alert { margin-bottom: 0; }
+
+/* ------- CMS-Specific --------*/
+.red-post {
+    background: #fff;
+    height: 400px;
+    padding: 10px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+    .red-post-more { position: absolute; bottom: 20px; left: 20px; right: 20px }
+
+/* ------- Admin panel --------*/
+.red-admin-sidebar > li > a { display: block; cursor: pointer; padding: 10px; }
+.red-admin-sidebar > li.active, .red-admin-sidebar > li:hover { background-color: #5F4586; }
+    .red-admin-sidebar > li.active > a, .red-admin-sidebar > li:hover > a { color: #fff; }

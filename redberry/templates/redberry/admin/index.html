@@ -1,0 +1,62 @@
+{% extends "redberry/_base.html" %}
+
+{% block head %}
+    <title>Admin Panel | {{ model_name.title() }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ url_for('redberry.admin') }}" >Redberry Admin</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('redberry.home') }}">View Site</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="red-admin-sidebar">
+                    <li class="{% if model_name == 'category' %}active{% endif %}">
+                        <a href="{{ url_for('redberry.admin', model_name='category') }}">Categories</a>
+                    </li>
+                    <li class="{% if model_name == 'post' %}active{% endif %}">
+                        <a href="{{ url_for('redberry.admin', model_name='post') }}">Posts</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-8">
+                {% block admin_content %}
+                    {% if model_name == 'category' %}
+                        {% include 'redberry/admin/_categories.html' %}
+
+                    {% elif model_name == 'post' %}
+                        {% include 'redberry/admin/_posts.html' %}
+
+                    {% endif %}
+                {% endblock %}
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('redberry.static', filename='js/restful.min.js') }}"></script>
+    <script>
+        // Initialize RestfulLinks with default options
+        $(document).ready(function(){
+            $('body').restfullinks()
+        })
+    </script>
+{% endblock %}

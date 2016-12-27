@@ -1,0 +1,5 @@
+include VERSION
+include requirements.txt
+include CHANGELOG.txt
+recursive-include redberry/static *
+recursive-include redberry/templates *

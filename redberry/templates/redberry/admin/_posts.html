@@ -1,0 +1,43 @@
+<h1>
+    Posts
+    <a class="btn btn-lg btn-success pull-right" href="{{ url_for('redberry.new_record', model_name='post') }}">
+        <span class="glyphicon glyphicon-plus"></span>
+        Add New
+    </a>
+</h1>
+
+{% if not objects %}
+    No posts yet.
+{% else %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Published</th>
+                <th>Created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for post in objects %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.summary(20) }}</td>
+                    <td>{{ post.published }}</td>
+                    <td>{{ post.created_at | pretty_date }}</td>
+                    <td>
+                        <a href="{{ url_for('redberry.edit_record', model_name='post', slug=post.slug) }}">Edit</a>
+                        <a href="{{ url_for('redberry.edit_record', model_name='post', slug=post.slug) }}" data-method="delete">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+{% endif %}

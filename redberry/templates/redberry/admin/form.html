@@ -1,0 +1,39 @@
+{% extends "redberry/admin/index.html" %}
+
+{% block head %}
+    <title>Admin</title>
+{% endblock %}
+
+{% block admin_content %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form method="POST">
+                    {{ form.csrf_token }}
+
+                    {% for field in form %}
+                        {% if field.name != 'csrf_token' %}
+                            {% if field.errors %}
+                                <div class="form-group has-error">
+                                    <label>{{ field.label }}</label>
+                                    {{ field(class='form-control') }}
+                                    <span class="help-block">
+                                        {% for error in field.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                            {% else %}
+                                <div class="form-group ">
+                                    <label>{{ field.label }}</label>
+                                    {{ field(class='form-control') }}
+                                </div>
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-lg btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
