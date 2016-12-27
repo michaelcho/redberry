@@ -3,6 +3,13 @@
 Redberry is a Blueprint for adding CMS functionality into your Flask app. 
 It is intended to be registered into an existing Flask app, not as a standalone application.
 
+## Features
+- Start using Redberry in your Flask app in 3 lines
+- Display posts and categories
+- Create, update, and delete in the included admin panel
+- Customizable templates
+- Built with Bootstrap for easy modification
+
 ## Installation
 `pip install redberry`
 
@@ -49,6 +56,16 @@ Templates can be modified by placing jinja files in your app's templates/redberr
 
 Only place template files here that you want to override, it is not necessary to copy all files.
 
+## Screenshots
+![Index Page](/docs/assets/index.png "Index Page")
+
+![Category Page](/docs/assets/category.png "Category Page")
+
+![Post Page](/docs/assets/post.png "Post Page")
+
+![Admin Page](/docs/assets/admin-index.png "Admin Page")
+
+![Editing Page](/docs/assets/admin-form.png "Editing Page")
  
 ### Developer Notes
 To update the package:
