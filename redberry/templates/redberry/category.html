@@ -18,7 +18,7 @@
             </li>
         </ol>
 
-        <h1 class="text-center margin-bottom-10">{{ category.title }}</h1>
+        <h1 class="text-center margin-bottom-10">{{ category.title | safe }}</h1>
         <h4 class="text-center margin-bottom-30">{{ category.description }}</h4>
 
         {% for post in category.posts %}
