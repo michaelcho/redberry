@@ -7,8 +7,9 @@ It is intended to be registered into an existing Flask app, not as a standalone 
 - Start using Redberry in your Flask app in 3 lines
 - Display posts and categories
 - Create, update, and delete in the included admin panel
+- Includes rich text editor
 - Customizable templates
-- Built with Bootstrap for easy modification
+- Built with Bootstrap for easy modification, and mobile-optimized / responsive
 
 ## Installation
 `pip install redberry`
