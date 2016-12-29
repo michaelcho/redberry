@@ -1,4 +1,4 @@
-__v0.0.5 - TBC__  
+__v0.0.5 - 2016-12-28__  
 Add unit tests  
 Add rich text editor
 
