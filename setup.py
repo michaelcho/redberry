@@ -7,16 +7,26 @@ version = open(direc + os.sep + 'VERSION').readline().strip()
 
 
 # Dynamically parse install requirements from requirements.txt
-def parse_requirements():
-    packages_array = []
-    requirements_file = open(direc + os.sep + 'requirements.txt')
-    for line in requirements_file:
-        if line.strip() == '#Testing':
-            break
-        if line.strip():
-            packages_array.append(line)
+def parse_requirements(test_requirements=False):
+    packages = []
 
-    return packages_array
+    if test_requirements:
+        requirements_file = open(os.path.join(direc, 'redberry', 'tests', 'requirements.txt'))
+    else:
+        requirements_file = open(os.path.join(direc, 'requirements.txt'))
+
+    for line in requirements_file:
+        package = line.strip()
+
+        if not package:
+            break
+
+        packages.append(package)
+
+    return packages
+
+requirements = parse_requirements(test_requirements=False)
+test_requirements = parse_requirements(test_requirements=True)
 
 setup(
     name='Redberry',
@@ -28,7 +38,8 @@ setup(
     license='Apache License 2.0',
     url='https://github.com/michaelcho/redberry',
 
-    install_requires=parse_requirements(),
+    install_requires=requirements,
+    tests_require=test_requirements,
     packages=find_packages(),
 
     # Includes templates and static files in MANIFEST.in

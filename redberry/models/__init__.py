@@ -1,4 +1,5 @@
 from slugify import slugify
+from html5lib_truncation import truncate_html
 
 from redberry.blueprint import cms
 
@@ -37,7 +38,7 @@ class RedModel(db.Model):
         if len(long_field) <= length:
             return long_field
 
-        return long_field[:length] + "..."
+        return truncate_html(long_field, length, end='...')
 
 
 # Enable all models to be imported from the module. Import at the end to prevent circular imports.

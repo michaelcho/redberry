@@ -24,7 +24,7 @@
             {% for category in objects %}
                 <tr>
                     <td>{{ category.id }}</td>
-                    <td>{{ category.title }}</td>
+                    <td>{{ category.title | safe }}</td>
                     <td>{{ category.summary(20) }}</td>
                     <td>{{ category.created_at | pretty_date }}</td>
                     <td>

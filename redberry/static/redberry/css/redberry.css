@@ -1,6 +1,5 @@
 /*
- * RedberryCMS v0.0.1
- *
+ * RedberryCMS
  *
  */
 
@@ -72,7 +71,7 @@ ul {
 /* ------- CMS-Specific --------*/
 .red-post {
     background: #fff;
-    height: 400px;
+    min-height: 400px;
     padding: 10px;
     position: relative;
     font-size: 18px;
@@ -84,3 +83,7 @@ ul {
 .red-admin-sidebar > li > a { display: block; cursor: pointer; padding: 10px; }
 .red-admin-sidebar > li.active, .red-admin-sidebar > li:hover { background-color: #5F4586; }
     .red-admin-sidebar > li.active > a, .red-admin-sidebar > li:hover > a { color: #fff; }
+
+.rich-editable {
+    height: 250px;
+}

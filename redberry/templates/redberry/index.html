@@ -31,7 +31,7 @@
                         </p>
                     {% endif %}
 
-                    {{ post.summary() }}
+                    {{ post.summary() | safe }}
 
 
                     <a class="btn btn-primary btn-lg red-post-more" href="{{ url_for('redberry.show_post', slug=post.slug) }}">

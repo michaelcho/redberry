@@ -10,3 +10,4 @@ WTForms.egg-info
 # Directories
 build/
 dist/
+.cache/

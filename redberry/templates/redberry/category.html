@@ -18,7 +18,7 @@
             </li>
         </ol>
 
-        <h1 class="text-center margin-bottom-10">{{ category.title }}</h1>
+        <h1 class="text-center margin-bottom-10">{{ category.title | safe }}</h1>
         <h4 class="text-center margin-bottom-30">{{ category.description }}</h4>
 
         {% for post in category.posts %}
@@ -28,7 +28,7 @@
                         <a href="{{ url_for('redberry.show_post', slug=post.slug) }}">{{ post.title }}</a>
                     </h3>
 
-                    {{ post.summary() }}
+                    {{ post.summary() | safe }}
 
 
                     <a class="btn btn-primary btn-lg red-post-more" href="{{ url_for('redberry.show_post', slug=post.slug) }}">

@@ -1,5 +1,9 @@
 include VERSION
 include requirements.txt
-include CHANGELOG.txt
+include CHANGELOG.md
+include README.md
 recursive-include redberry/static *
 recursive-include redberry/templates *
+global-exclude *.pyc
+global-exclude .gitignore
+global-exclude .DS_Store

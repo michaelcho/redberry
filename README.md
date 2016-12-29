@@ -7,8 +7,9 @@ It is intended to be registered into an existing Flask app, not as a standalone 
 - Start using Redberry in your Flask app in 3 lines
 - Display posts and categories
 - Create, update, and delete in the included admin panel
+- Includes rich text editor
 - Customizable templates
-- Built with Bootstrap for easy modification
+- Built with Bootstrap for easy modification, and mobile-optimized / responsive
 
 ## Installation
 `pip install redberry`
@@ -66,9 +67,19 @@ Only place template files here that you want to override, it is not necessary to
 ![Admin Page](/docs/assets/admin-index.png "Admin Page")
 
 ![Editing Page](/docs/assets/admin-form.png "Editing Page")
+
+## Running tests
+Unit tests are included in the redberry/tests folder when you clone this repo. 
+Tests will run with a local sqlite database.
+
+If you want to run unit tests locally:
+- `pip install -r redberry/tests/requirements.txt`
+- `py.test redberry/tests`
+
  
 ### Developer Notes
 To update the package:
+- run tests
 - bump VERSION
 - update CHANGELOG.txt
 - `python setup.py sdist`
