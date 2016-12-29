@@ -68,7 +68,8 @@ Only place template files here that you want to override, it is not necessary to
 ![Editing Page](/docs/assets/admin-form.png "Editing Page")
 
 ## Running tests
-Unit tests are included in the redberry/tests folder when you clone this repo.
+Unit tests are included in the redberry/tests folder when you clone this repo. 
+Tests will run with a local sqlite database.
 
 If you want to run unit tests locally:
 - `pip install -r redberry/tests/requirements.txt`

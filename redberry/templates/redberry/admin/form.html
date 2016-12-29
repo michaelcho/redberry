@@ -2,6 +2,7 @@
 
 {% block head %}
     <title>Admin</title>
+    <link href="https://cdn.quilljs.com/1.1.8/quill.snow.css" rel="stylesheet">
 {% endblock %}
 
 {% block admin_content %}
@@ -12,22 +13,21 @@
 
                     {% for field in form %}
                         {% if field.name != 'csrf_token' %}
-                            {% if field.errors %}
-                                <div class="form-group has-error">
-                                    <label>{{ field.label }}</label>
+                            <div class="form-group {% if field.errors %}has-error{% endif %}">
+                                {{ field.label }}
+                                {% if field.type == 'TextAreaField' %}
+                                    <div class="rich-editable" data-id="{{ field.name }}"></div>
+                                    {{ field(class='hide') }}
+                                {% else %}
                                     {{ field(class='form-control') }}
-                                    <span class="help-block">
-                                        {% for error in field.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </span>
-                                </div>
-                            {% else %}
-                                <div class="form-group ">
-                                    <label>{{ field.label }}</label>
-                                    {{ field(class='form-control') }}
-                                </div>
-                            {% endif %}
+                                {% endif %}
+
+                                <span class="help-block">
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </span>
+                            </div>
 
                         {% endif %}
                     {% endfor %}
@@ -36,4 +36,8 @@
                 </form>
             </div>
         </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{{ url_for('redberry.static', filename='js/redberry_admin.js')}}"></script>
 {% endblock %}
