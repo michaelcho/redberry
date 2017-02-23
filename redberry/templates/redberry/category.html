@@ -6,17 +6,10 @@
 
 
 {% block content %}
+
+    {% include "redberry/category/_breadcrumb.html" %}
+
     <div id="red-category-id-{{ category.id }}" class="container red-category">
-        <ol class="breadcrumb">
-            <li>
-                <a href="{{ url_for('redberry.home') }}">
-                    {{ svg_icon('icon-home') }}
-                </a>
-            </li>
-            <li>
-                {{ category.title }}
-            </li>
-        </ol>
 
         <h1 class="text-center margin-bottom-10">{{ category.title | safe }}</h1>
         <h4 class="text-center margin-bottom-30">{{ category.description }}</h4>

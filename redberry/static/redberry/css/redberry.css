@@ -52,7 +52,7 @@ ul {
 .font-white { color: #fff; }
 .font-muted { color: #cdbfe3; }
 
-.breadcrumb { background: None; }
+ol.breadcrumb { background: none; margin: 30px auto; }
 
 .bg-primary { background-color: #5F4586; }
 

@@ -22,7 +22,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <ul class="red-admin-sidebar">
                     <li class="{% if model_name == 'category' %}active{% endif %}">
                         <a href="{{ url_for('redberry.admin', model_name='category') }}">Categories</a>
@@ -33,7 +33,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-9">
                 {% block admin_content %}
                     {% if model_name == 'category' %}
                         {% include 'redberry/admin/_categories.html' %}

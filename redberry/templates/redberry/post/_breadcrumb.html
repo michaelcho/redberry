@@ -1,0 +1,14 @@
+{% extends "redberry/_macros.html" %}
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url_for('redberry.home') }}">
+                {{ svg_icon('icon-home') }}
+            </a>
+        </li>
+        <li>
+            {{ post.title }}
+        </li>
+    </ol>
+</div>

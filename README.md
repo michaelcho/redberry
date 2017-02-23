@@ -57,6 +57,9 @@ Templates can be modified by placing jinja files in your app's templates/redberr
 
 Only place template files here that you want to override, it is not necessary to copy all files.
 
+By default, Redberry looks for a css file in your app's static directory at /static/redberry/css/redberry.css. 
+Create a file here to override any default styling.
+
 ## Screenshots
 ![Index Page](/docs/assets/index.png "Index Page")
 

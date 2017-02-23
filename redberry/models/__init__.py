@@ -44,3 +44,4 @@ class RedModel(db.Model):
 # Enable all models to be imported from the module. Import at the end to prevent circular imports.
 from .category import RedCategory
 from .post import RedPost
+from .version import RedVersion
