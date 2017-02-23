@@ -1,6 +1,9 @@
+import os
 import functools
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask.ext.login import current_user
+
+REDBERRY_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 cms = Blueprint('redberry', __name__, template_folder='templates', static_folder='static/redberry')
 cms.config = {}

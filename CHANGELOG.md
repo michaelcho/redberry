@@ -1,3 +1,10 @@
+__v0.0.7 - TBC__  
+Add migration support  
+Add auto-discovery of models
+
+__v0.0.6 - 2017-02-23__  
+Add CSS templates / theming  
+
 __v0.0.5 - 2016-12-28__  
 Add unit tests  
 Add rich text editor

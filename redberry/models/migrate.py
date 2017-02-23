@@ -2,7 +2,7 @@ import logging
 from sqlalchemy.sql.elements import quoted_name
 
 from redberry.blueprint import cms
-from redberry.models import RedPost, RedCategory
+from redberry.models import RedPost, RedCategory, RedVersion
 from redberry.models.post import categories_posts
 
 
@@ -13,7 +13,8 @@ class RedMigrator:
         self.logger = logging.getLogger('redberry')
 
     def do_migration(self):
-        for model in [RedPost, RedCategory]:
+        self.logger.warning("--- Migrations %s" % RedVersion.all_migrations())
+        for model in [RedVersion, RedPost, RedCategory]:
             if not self.db.engine.has_table(quoted_name(model.__table__, True)):
                 self.logger.warning("Creating database table %s" % model.__tablename__)
                 model.__table__.create(self.db.engine)
