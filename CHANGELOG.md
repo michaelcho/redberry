@@ -1,6 +1,9 @@
-__v0.0.7 - TBC__  
+__v0.0.7 - TBC (not released yet)__  
 Add migration support  
 Add auto-discovery of models
+
+__v0.0.6.1 - 2017-02-24__  
+Fix macros import bug 
 
 __v0.0.6 - 2017-02-23__  
 Add CSS templates / theming  
