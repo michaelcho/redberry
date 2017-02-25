@@ -7,21 +7,24 @@
 {% block content %}
     {% include "redberry/post/_breadcrumb.html" %}
 
-    <div id="red-post-id-{{ post.id }}" class="container red-post">
+    <div class="container">
+        <div id="red-post-id-{{ post.id }}" class="red-post">
 
-        <h1 class="text-center">{{ post.title }}</h1>
+            <h1 class="text-center">{{ post.title }}</h1>
 
-        <div class="text-center margin-bottom-30">
-            {% for category in post.categories %}
-            <a class="label label-success" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">
-                {{category.title}}
-            </a>
-            {% endfor %}
-        </div>
+            <div class="text-center margin-bottom-30">
+                {% for category in post.categories %}
+                <a class="label label-success" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">
+                    {{category.title}}
+                </a>
+                {% endfor %}
+            </div>
 
-        <div class="col-md-offset-2 col-md-8">
-           {{ post.content|safe }}
+            <div class="col-md-offset-2 col-md-8">
+               {{ post.content|safe }}
+            </div>
         </div>
     </div>
+
 
 {% endblock %}
