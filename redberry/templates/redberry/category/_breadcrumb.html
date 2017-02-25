@@ -1,10 +1,10 @@
-{% extends "redberry/_macros.html" %}
+{% import "redberry/_macros.html" as macros %}
 
 <div class="container">
     <ol class="breadcrumb">
         <li>
             <a href="{{ url_for('redberry.home') }}">
-                {{ svg_icon('icon-home') }}
+                {{ macros.svg_icon('icon-home') }}
             </a>
         </li>
         <li>
