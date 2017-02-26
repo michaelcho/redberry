@@ -10,7 +10,9 @@
     <div class="container">
         <div id="red-post-id-{{ post.id }}" class="red-post">
 
-            <h1 class="text-center">{{ post.title }}</h1>
+            <div class="row">
+                <h1 class="text-center col-md-offset-1 col-md-10">{{ post.title }}</h1>
+            </div>
 
             <div class="text-center margin-bottom-30">
                 {% for category in post.categories %}
@@ -20,9 +22,12 @@
                 {% endfor %}
             </div>
 
-            <div class="col-md-offset-2 col-md-8">
-               {{ post.content|safe }}
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                   {{ post.content|safe }}
+                </div>
             </div>
+
         </div>
     </div>
 

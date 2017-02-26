@@ -2,7 +2,13 @@
 {% include "redberry/_macros.html" %}
 
 <html>
-    {% include "redberry/_head.html" %}
+    <head>
+        {% include "redberry/_head.html" %}
+
+        {% block head %}{% endblock %}
+    </head>
+
+
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}

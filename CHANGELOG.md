@@ -2,6 +2,10 @@ __v0.0.7 - TBC (not released yet)__
 Add migration support  
 Add auto-discovery of models
 
+__v0.0.6.2 - 2017-02-25__  
+Fix head partial import bug  
+Fix textarea editing in admin forms
+
 __v0.0.6.1 - 2017-02-24__  
 Fix macros import bug 
 
