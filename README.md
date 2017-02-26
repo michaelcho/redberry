@@ -88,4 +88,6 @@ To update the package:
 - `python setup.py sdist`
 - `python setup.py bdist_wheel`
 - `twine upload dist/*`
+- `git tag v0.0.6` (or new version)
+- `git push --tags`
 
