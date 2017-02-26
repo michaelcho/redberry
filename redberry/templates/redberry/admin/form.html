@@ -17,7 +17,7 @@
                         <div class="form-group {% if field.errors %}has-error{% endif %}">
                             {{ field.label }}
                             {% if field.type == 'TextAreaField' %}
-                                <div class="rich-editable" data-id="{{ field.name }}"></div>
+                                <div class="rich-editable" data-id="{{ field.name }}">{{ field.data | safe }}</div>
                                 {{ field(class='hide') }}
                             {% else %}
                                 {{ field(class='form-control') }}
