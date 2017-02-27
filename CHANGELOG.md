@@ -1,6 +1,9 @@
 __v0.0.7 - TBC (not released yet)__  
 Add auto-discovery of models
 
+__v0.0.6.4 - 2017-02-26__  
+Fix bug with editing selected category
+
 __v0.0.6.3 - 2017-02-26__  
 Add migration support    
 Enable multiple rich editable fields per page  

@@ -156,10 +156,7 @@ def edit_record(model_name, slug):
 
         # Convert category ids into objects for saving in the relationship.
         form.categories.choices = [(c.id, c.title) for c in RedCategory.sorted()]
-        if form.categories.data:
-            form.categories.data = RedCategory.query.filter(RedCategory.id.in_(form.categories.data)).all()
-
-        elif request.method != 'POST':
+        if record.categories and request.method == 'GET':
             form.categories.data = [c.id for c in record.categories]
 
     if not record:
@@ -167,6 +164,10 @@ def edit_record(model_name, slug):
         return redirect(url_for('redberry.admin'))
 
     if form.validate_on_submit():
+
+        if model_name == 'post' and form.categories.data:
+            form.categories.data = RedCategory.query.filter(RedCategory.id.in_(form.categories.data)).all()
+
         form.populate_obj(record)
         cms.config['db'].session.flush()
         flash("Saved %s %s" % (model_name, record.id), 'success')

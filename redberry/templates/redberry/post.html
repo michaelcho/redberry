@@ -16,7 +16,7 @@
 
             <div class="text-center margin-bottom-30">
                 {% for category in post.categories %}
-                <a class="label label-success" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">
+                <a class="label label-success category-label" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">
                     {{category.title}}
                 </a>
                 {% endfor %}

@@ -80,6 +80,8 @@ ol.breadcrumb { background: none; margin: 30px auto; }
     .red-post.panel { height: 350px; }
     .red-post-more { position: absolute; bottom: 20px; left: 20px; right: 20px }
 
+    .red-post .category-label { margin-right: 5px; }
+
 /* ------- Admin panel --------*/
 .red-admin-sidebar > li > a { display: block; cursor: pointer; padding: 10px; }
 .red-admin-sidebar > li.active, .red-admin-sidebar > li:hover { background-color: #5F4586; }
