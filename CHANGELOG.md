@@ -1,6 +1,10 @@
 __v0.0.7 - TBC (not released yet)__  
-Add migration support  
 Add auto-discovery of models
+
+__v0.0.6.3 - 2017-02-26__  
+Add migration support    
+Enable multiple rich editable fields per page  
+Add new summary column 
 
 __v0.0.6.2 - 2017-02-25__  
 Fix head partial import bug  

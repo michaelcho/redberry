@@ -15,6 +15,7 @@ class RedPost(RedModel):
     title = db.Column(db.String(255))
     slug = db.Column(db.String(255))
     content = db.Column(db.Text)
+    summary = db.Column(db.Text)
     published = db.Column(db.Boolean, default=True, index=True)
     created_at = db.Column(db.DateTime, server_default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, server_default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())

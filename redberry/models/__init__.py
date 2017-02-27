@@ -25,12 +25,16 @@ class RedModel(db.Model):
         db.session.delete(self)
         db.session.flush()
 
-    def summary(self, length=150):
+    def summarise(self, length=150):
         long_field = None
 
-        for field in ('content', 'description'):
-            if hasattr(self, field):
-                long_field = getattr(self, field)
+        if hasattr(self, 'summary'):
+            long_field = getattr(self, 'summary')
+
+        if not long_field:
+            for field in ('content', 'description'):
+                if hasattr(self, field):
+                    long_field = getattr(self, field)
 
         if not long_field:
             return ''

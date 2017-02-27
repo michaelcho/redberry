@@ -155,11 +155,12 @@ def edit_record(model_name, slug):
         form = PostForm(obj=record)
 
         # Convert category ids into objects for saving in the relationship.
+        form.categories.choices = [(c.id, c.title) for c in RedCategory.sorted()]
         if form.categories.data:
             form.categories.data = RedCategory.query.filter(RedCategory.id.in_(form.categories.data)).all()
-            form.categories.choices = [(c, c.title) for c in RedCategory.sorted()]
-        else:
-            form.categories.choices = [(c.id, c.title) for c in RedCategory.sorted()]
+
+        elif request.method != 'POST':
+            form.categories.data = [c.id for c in record.categories]
 
     if not record:
         flash("%s not found!" % model_name.title(), 'danger')
