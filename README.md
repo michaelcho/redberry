@@ -10,6 +10,7 @@ It is intended to be registered into an existing Flask app, not as a standalone 
 - Includes rich text editor
 - Customizable templates
 - Built with Bootstrap for easy modification, and mobile-optimized / responsive
+- Automatically generated sitemap
 
 ## Installation
 `pip install redberry`
@@ -37,6 +38,10 @@ When you start your app, Redberry checks that any required database tables are p
 If not, it will run migrations and create a sample post and category.
 
 You can now access the Redberry frontend at `/blog` (or whatever you entered as the url_prefix).
+
+To generate a sitemap, use your browser to visit:
+- http://yourdomain.com/blog/sitemap (this will generate an XML sitemap)
+- http://yourdomain.com/blog/redberry/sitemap.xml (this is the generated file)
 
 ## Admin Panel
 **Certain routes requires your user instance to be logged in and implement an `is_admin()` method.**
