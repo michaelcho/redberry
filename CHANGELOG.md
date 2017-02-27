@@ -1,3 +1,6 @@
+__v0.0.7.1 - 2017-02-26__  
+Fix sitemap generation bug for last modified date
+
 __v0.0.7.0 - 2017-02-26__  
 Add sitemap generation
 

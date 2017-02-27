@@ -98,7 +98,7 @@ def sitemap():
     sm = Sitemap(changefreq='weekly')
 
     for post in RedPost.all_published():
-        sm.add(url_for('redberry.show_post', slug=post.slug, _external=True), lastmod=post.updated_at)
+        sm.add(url_for('redberry.show_post', slug=post.slug, _external=True), lastmod=post.updated_at.date())
 
     with open(os.path.join(REDBERRY_ROOT, 'static', 'redberry', 'sitemap.xml'), 'w') as f:
         sm.write(f)

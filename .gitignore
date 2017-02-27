@@ -6,6 +6,7 @@ Redberry.egg-info
 # Extra Files
 MANIFEST
 WTForms.egg-info
+redberry/static/redberry/sitemap.xml
 
 # Directories
 build/
