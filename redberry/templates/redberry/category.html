@@ -12,7 +12,11 @@
     <div id="red-category-id-{{ category.id }}" class="container red-category">
 
         <h1 class="text-center margin-bottom-10">{{ category.title | safe }}</h1>
-        <h4 class="text-center margin-bottom-30">{{ category.description }}</h4>
+        <h4 class="text-center margin-bottom-30">{{ category.description | safe }}</h4>
+
+        {% if not category.posts %}
+            No posts yet.
+        {% endif %}
 
         {% for post in category.posts %}
             <div class="col-md-4">
@@ -21,7 +25,7 @@
                         <a href="{{ url_for('redberry.show_post', slug=post.slug) }}">{{ post.title }}</a>
                     </h3>
 
-                    {{ post.summary() | safe }}
+                    {{ post.summarise() | safe }}
 
 
                     <a class="btn btn-primary btn-lg red-post-more" href="{{ url_for('redberry.show_post', slug=post.slug) }}">

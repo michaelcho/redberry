@@ -1,3 +1,5 @@
+{% import "redberry/_macros.html" as macros %}
+
 <h1>
     Posts
     <a class="btn btn-lg btn-success pull-right" href="{{ url_for('redberry.new_record', model_name='post') }}">
@@ -14,7 +16,7 @@
             <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Content</th>
+                <th>Summary</th>
                 <th>Published</th>
                 <th>Created</th>
                 <th>Action</th>
@@ -25,9 +27,9 @@
             {% for post in objects %}
                 <tr>
                     <td>{{ post.id }}</td>
-                    <td>{{ post.title }}</td>
-                    <td>{{ post.summary(20) | safe }}</td>
-                    <td>{{ post.published }}</td>
+                    <td><a href="{{ url_for('redberry.show_post', slug=post.slug) }}" target="_blank">{{ post.title }}</a></td>
+                    <td>{{ post.summary | safe }}</td>
+                    <td>{{ macros.true_or_false(post.published) }}</td>
                     <td>{{ post.created_at | pretty_date }}</td>
                     <td>
                         <a href="{{ url_for('redberry.edit_record', model_name='post', slug=post.slug) }}">Edit</a>

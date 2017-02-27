@@ -29,3 +29,14 @@ class RedVersion(RedModel):
 
         return migrations
 
+    @classmethod
+    def already_run(cls, migration_file):
+        return cls.query.filter_by(version=migration_file).first()
+
+    @classmethod
+    def store_migration(cls, migration_file):
+        migration = RedVersion(version=migration_file)
+        db.session.add(migration)
+        db.session.flush()
+
+

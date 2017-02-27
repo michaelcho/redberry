@@ -24,8 +24,8 @@
             {% for category in objects %}
                 <tr>
                     <td>{{ category.id }}</td>
-                    <td>{{ category.title | safe }}</td>
-                    <td>{{ category.summary(20) }}</td>
+                    <td><a href="{{ url_for('redberry.show_category', category_slug=category.slug) }}" target="_blank">{{ category.title | safe }}</a></td>
+                    <td>{{ category.summarise(20) }}</td>
                     <td>{{ category.created_at | pretty_date }}</td>
                     <td>
                         <a href="{{ url_for('redberry.edit_record', model_name='category', slug=category.slug) }}">Edit</a>

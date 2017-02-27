@@ -160,6 +160,7 @@ def edit_record(model_name, slug):
             form.categories.choices = [(c, c.title) for c in RedCategory.sorted()]
         else:
             form.categories.choices = [(c.id, c.title) for c in RedCategory.sorted()]
+            form.categories.data = [c.id for c in record.categories]
 
     if not record:
         flash("%s not found!" % model_name.title(), 'danger')
