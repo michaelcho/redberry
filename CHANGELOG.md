@@ -1,5 +1,5 @@
-__v0.0.7 - TBC (not released yet)__  
-Add auto-discovery of models
+__v0.0.7.0 - 2017-02-26__  
+Add sitemap generation
 
 __v0.0.6.4 - 2017-02-26__  
 Fix bug with editing selected category

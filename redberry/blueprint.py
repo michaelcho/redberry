@@ -90,6 +90,23 @@ def show_category(category_slug):
     return render_template('redberry/category.html', category=category)
 
 
+@cms.route('/sitemap')
+def sitemap():
+    print "printing sitemap"
+    from redberry.models import RedPost
+    from apesmit import Sitemap
+    sm = Sitemap(changefreq='weekly')
+
+    for post in RedPost.all_published():
+        sm.add(url_for('redberry.show_post', slug=post.slug, _external=True), lastmod=post.updated_at)
+
+    with open(os.path.join(REDBERRY_ROOT, 'static', 'redberry', 'sitemap.xml'), 'w') as f:
+        sm.write(f)
+
+    flash("Sitemap created.", 'success')
+    return redirect(url_for('redberry.home'))
+
+
 ##############
 # ADMIN ROUTES
 ##############
