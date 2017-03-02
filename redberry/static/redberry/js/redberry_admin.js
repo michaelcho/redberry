@@ -15,7 +15,7 @@ var RedberryAdmin = {
                     var textarea_id = $(this).attr('id')
                     var edited_text = $(this).find('.ql-editor').html()
 
-                    $('textarea#' + textarea_id).text( edited_text )
+                    $('textarea[name=' + textarea_id + ']').text( edited_text )
 
                 })
                 return true
