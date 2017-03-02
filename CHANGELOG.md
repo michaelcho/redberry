@@ -1,3 +1,6 @@
+__v0.0.7.2 - 2017-03-02__  
+Fix JS with Admin editing not saving textarea fields
+
 __v0.0.7.1 - 2017-02-26__  
 Fix sitemap generation bug for last modified date
 
