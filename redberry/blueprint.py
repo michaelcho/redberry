@@ -91,14 +91,16 @@ def show_category(category_slug):
 
 
 @cms.route('/sitemap')
-def sitemap():
-    print "printing sitemap"
-    from redberry.models import RedPost
+def build_sitemap():
+    from redberry.models import RedPost, RedCategory
     from apesmit import Sitemap
     sm = Sitemap(changefreq='weekly')
 
     for post in RedPost.all_published():
         sm.add(url_for('redberry.show_post', slug=post.slug, _external=True), lastmod=post.updated_at.date())
+
+    for category in RedCategory.query.all():
+        sm.add(url_for('redberry.show_category', category_slug=category.slug, _external=True), lastmod=category.updated_at.date())
 
     with open(os.path.join(REDBERRY_ROOT, 'static', 'redberry', 'sitemap.xml'), 'w') as f:
         sm.write(f)
@@ -151,6 +153,9 @@ def new_record(model_name):
 
         cms.config['db'].session.add(new_record)
         cms.config['db'].session.flush()
+
+        build_sitemap()
+
         flash("Saved %s %s" % (model_name, new_record.id), 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
@@ -187,11 +192,13 @@ def edit_record(model_name, slug):
 
         form.populate_obj(record)
         cms.config['db'].session.flush()
+        build_sitemap()
         flash("Saved %s %s" % (model_name, record.id), 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
     elif request.values.get('_method') == 'DELETE':
         record.delete()
+        build_sitemap()
         flash("Deleted %s" % model_name, 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
