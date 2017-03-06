@@ -1,8 +1,7 @@
-__v0.0.7.3 - TBC__  
+__v0.0.7.3 - 2017-03-05__  
 Add category links to sitemap  
 Automatically generate sitemap when editing posts and categories  
 Add AMP (Accelerated Mobile Pages)  
-Add SEO-friendly rich data tags
 
 __v0.0.7.2 - 2017-03-02__  
 Fix JS with Admin editing not saving textarea fields

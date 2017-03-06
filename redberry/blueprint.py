@@ -63,31 +63,34 @@ def pretty_date(dttm):
 # CMS ROUTES
 ############
 @cms.route('/')
-@cms.route('/page/<int:page>')
-def home(page=1):
+@cms.route('.amp/')
+def home():
     from redberry.models import RedPost
     posts = RedPost.all_published()
-    return render_template('redberry/index.html', posts=posts)
+    return render_redberry('redberry/index.html', posts=posts)
 
 
 @cms.route('/<slug>')
+@cms.route('/<slug>.amp')
 def show_post(slug):
     from redberry.models import RedPost
     post = RedPost.query.filter_by(slug=slug).first()
     if not post:
         flash("Post not found!", 'danger')
         return redirect(url_for('redberry.home'))
-    return render_template('redberry/post.html', post=post)
+
+    return render_redberry('redberry/post.html', post=post)
 
 
 @cms.route('/category/<category_slug>')
+@cms.route('/category/<category_slug>.amp')
 def show_category(category_slug):
     from redberry.models import RedCategory
     category = RedCategory.query.filter_by(slug=category_slug).first()
     if not category:
         flash("Category not found!", 'danger')
         return redirect(url_for('redberry.home'))
-    return render_template('redberry/category.html', category=category)
+    return render_redberry('redberry/category.html', category=category)
 
 
 @cms.route('/sitemap')
@@ -203,3 +206,15 @@ def edit_record(model_name, slug):
         return redirect(url_for('redberry.admin', model_name=model_name))
 
     return render_template('redberry/admin/form.html', form=form, object=record, model_name=model_name)
+
+
+##############
+# ADMIN ROUTES
+##############
+def render_redberry(template_name, **kwargs):
+
+    # For Accelerated Mobile Pages (AMP, ref: https://www.ampproject.org) use templates with a .amp suffix
+    if '.amp' in request.path:
+        kwargs['render_amp'] = True
+
+    return render_template(template_name, **kwargs)

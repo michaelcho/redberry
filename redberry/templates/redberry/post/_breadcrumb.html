@@ -7,6 +7,16 @@
                 {{ macros.svg_icon('icon-home') }}
             </a>
         </li>
+
+        {% if post.categories %}
+            <li>
+                {% set category = post.categories[0] %}
+                <a href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">
+                    {{ category.title }}
+                </a>
+            </li>
+        {% endif %}
+
         <li>
             {{ post.title }}
         </li>

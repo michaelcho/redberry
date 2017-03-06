@@ -52,7 +52,13 @@ ul {
 .font-white { color: #fff; }
 .font-muted { color: #cdbfe3; }
 
-ol.breadcrumb { background: none; margin: 30px auto; }
+ol.breadcrumb { background: none; margin: 0 auto; list-style: none; }
+    ol.breadcrumb li:after {
+        padding: 0 5px;
+        color: #C0CCDA;
+        content: "/ ";
+    }
+    ol.breadcrumb li:last-child:after, ol.breadcrumb > li+li:before { content: none; }
 
 .bg-primary { background-color: #5F4586; }
 
@@ -68,6 +74,8 @@ ol.breadcrumb { background: none; margin: 30px auto; }
 
 .flashes.alert { margin-bottom: 0; }
 
+svg#svg-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 /* ------- CMS-Specific --------*/
 .red-post {
     background: #fff;
@@ -77,6 +85,7 @@ ol.breadcrumb { background: none; margin: 30px auto; }
     font-size: 18px;
     line-height: 1.5em;
 }
+    .red-post h3 { margin: 10px auto; }
     .red-post.panel { height: 350px; }
     .red-post-more { position: absolute; bottom: 20px; left: 20px; right: 20px }
 

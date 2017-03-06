@@ -1,6 +1,6 @@
 {% macro svg_icon(icon_name) %}
     <svg class="icon {{ icon_name }}">
-        <use xlink:href="{{ url_for('redberry.static', filename='symbol-defs.svg') }}#{{ icon_name }}"></use>
+        <use xlink:href="#{{ icon_name }}"></use>
     </svg>
 {% endmacro %}
 
