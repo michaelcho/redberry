@@ -33,7 +33,7 @@ class FrontendRoutesTest(RedTestCase):
         response = self.test_client.get(url + "-invalid")
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/' % self.url_prefix
-        self.assert_flashes("Post not found!", 'danger')
+        self.assert_flashes("Post not found!")
 
     def test_show_category(self):
         category = RedCategory.query.first()
@@ -52,5 +52,5 @@ class FrontendRoutesTest(RedTestCase):
         response = self.test_client.get(url + "-invalid")
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/' % self.url_prefix
-        self.assert_flashes("Category not found!", 'danger')
+        self.assert_flashes("Category not found!")
 

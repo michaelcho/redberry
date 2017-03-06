@@ -52,7 +52,7 @@ ul {
 .font-white { color: #fff; }
 .font-muted { color: #cdbfe3; }
 
-ol.breadcrumb { background: none; margin: 0 auto; list-style: none; }
+ol.breadcrumb { background: none; margin: 30px auto; list-style: none; }
     ol.breadcrumb li:after {
         padding: 0 5px;
         color: #C0CCDA;

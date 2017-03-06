@@ -63,7 +63,7 @@ def pretty_date(dttm):
 # CMS ROUTES
 ############
 @cms.route('/')
-@cms.route('.amp/')
+@cms.route('.amp/', endpoint='home_amp')
 def home():
     from redberry.models import RedPost
     posts = RedPost.all_published()
@@ -71,7 +71,7 @@ def home():
 
 
 @cms.route('/<slug>')
-@cms.route('/<slug>.amp')
+@cms.route('/<slug>.amp', endpoint='show_post_amp')
 def show_post(slug):
     from redberry.models import RedPost
     post = RedPost.query.filter_by(slug=slug).first()
@@ -83,7 +83,7 @@ def show_post(slug):
 
 
 @cms.route('/category/<category_slug>')
-@cms.route('/category/<category_slug>.amp')
+@cms.route('/category/<category_slug>.amp', endpoint='show_category_amp')
 def show_category(category_slug):
     from redberry.models import RedCategory
     category = RedCategory.query.filter_by(slug=category_slug).first()
