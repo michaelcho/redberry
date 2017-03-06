@@ -47,11 +47,11 @@ class RedTestCase(TestCase):
         RedPost.query.delete()
         self.db.session.execute("DELETE FROM redberry_categories_posts")
 
-    def assert_flashes(self, expected_message, expected_category='message'):
+    def assert_flashes(self, expected_message):
         with self.test_client.session_transaction() as session:
             try:
-                category, message = session['_flashes'][0]
+                message_tuples = session['_flashes']
+                messages = [t[1] for t in message_tuples]
             except KeyError:
                 raise AssertionError('nothing flashed')
-            assert expected_message in message
-            assert expected_category == category
+            assert expected_message in messages

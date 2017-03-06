@@ -11,6 +11,7 @@ It is intended to be registered into an existing Flask app, not as a standalone 
 - Customizable templates
 - Built with Bootstrap for easy modification, and mobile-optimized / responsive
 - Automatically generated sitemap
+- Automatically generated [Accelerated Mobile Pages](https://www.ampproject.org) versions of all pages. Just add `.amp` to the end of URLs for posts and categories.
 
 ## Installation
 `pip install redberry`

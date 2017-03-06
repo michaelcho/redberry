@@ -63,42 +63,47 @@ def pretty_date(dttm):
 # CMS ROUTES
 ############
 @cms.route('/')
-@cms.route('/page/<int:page>')
-def home(page=1):
+@cms.route('.amp/', endpoint='home_amp')
+def home():
     from redberry.models import RedPost
     posts = RedPost.all_published()
-    return render_template('redberry/index.html', posts=posts)
+    return render_redberry('redberry/index.html', posts=posts)
 
 
 @cms.route('/<slug>')
+@cms.route('/<slug>.amp', endpoint='show_post_amp')
 def show_post(slug):
     from redberry.models import RedPost
     post = RedPost.query.filter_by(slug=slug).first()
     if not post:
         flash("Post not found!", 'danger')
         return redirect(url_for('redberry.home'))
-    return render_template('redberry/post.html', post=post)
+
+    return render_redberry('redberry/post.html', post=post)
 
 
 @cms.route('/category/<category_slug>')
+@cms.route('/category/<category_slug>.amp', endpoint='show_category_amp')
 def show_category(category_slug):
     from redberry.models import RedCategory
     category = RedCategory.query.filter_by(slug=category_slug).first()
     if not category:
         flash("Category not found!", 'danger')
         return redirect(url_for('redberry.home'))
-    return render_template('redberry/category.html', category=category)
+    return render_redberry('redberry/category.html', category=category)
 
 
 @cms.route('/sitemap')
-def sitemap():
-    print "printing sitemap"
-    from redberry.models import RedPost
+def build_sitemap():
+    from redberry.models import RedPost, RedCategory
     from apesmit import Sitemap
     sm = Sitemap(changefreq='weekly')
 
     for post in RedPost.all_published():
         sm.add(url_for('redberry.show_post', slug=post.slug, _external=True), lastmod=post.updated_at.date())
+
+    for category in RedCategory.query.all():
+        sm.add(url_for('redberry.show_category', category_slug=category.slug, _external=True), lastmod=category.updated_at.date())
 
     with open(os.path.join(REDBERRY_ROOT, 'static', 'redberry', 'sitemap.xml'), 'w') as f:
         sm.write(f)
@@ -151,6 +156,9 @@ def new_record(model_name):
 
         cms.config['db'].session.add(new_record)
         cms.config['db'].session.flush()
+
+        build_sitemap()
+
         flash("Saved %s %s" % (model_name, new_record.id), 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
@@ -187,12 +195,26 @@ def edit_record(model_name, slug):
 
         form.populate_obj(record)
         cms.config['db'].session.flush()
+        build_sitemap()
         flash("Saved %s %s" % (model_name, record.id), 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
     elif request.values.get('_method') == 'DELETE':
         record.delete()
+        build_sitemap()
         flash("Deleted %s" % model_name, 'success')
         return redirect(url_for('redberry.admin', model_name=model_name))
 
     return render_template('redberry/admin/form.html', form=form, object=record, model_name=model_name)
+
+
+##############
+# ADMIN ROUTES
+##############
+def render_redberry(template_name, **kwargs):
+
+    # For Accelerated Mobile Pages (AMP, ref: https://www.ampproject.org) use templates with a .amp suffix
+    if '.amp' in request.path:
+        kwargs['render_amp'] = True
+
+    return render_template(template_name, **kwargs)

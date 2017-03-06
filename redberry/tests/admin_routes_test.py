@@ -36,7 +36,7 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'title': "A new category"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin' % self.url_prefix
-        self.assert_flashes("Saved category 2", 'success')
+        self.assert_flashes("Saved category 2")
         assert RedCategory.query.count() == 2
 
         new_category = RedCategory.query.all()[-1]
@@ -50,7 +50,7 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'title': "A new post"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin/post' % self.url_prefix
-        self.assert_flashes("Saved post 2", 'success')
+        self.assert_flashes("Saved post 2")
         assert RedPost.query.count() == 2
 
         new_post = RedPost.query.all()[-1]
@@ -65,7 +65,7 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'title': "A new title"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin' % self.url_prefix
-        self.assert_flashes("Saved category 1", 'success')
+        self.assert_flashes("Saved category 1")
         assert RedCategory.query.count() == 1
         assert category.title == "A new title"
 
@@ -78,7 +78,7 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'title': "A new title"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin/post' % self.url_prefix
-        self.assert_flashes("Saved post 1", 'success')
+        self.assert_flashes("Saved post 1")
         assert RedPost.query.count() == 1
         assert post.title == "A new title"
 
@@ -91,7 +91,7 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'_method': "DELETE"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin' % self.url_prefix
-        self.assert_flashes("Deleted category", 'success')
+        self.assert_flashes("Deleted category")
         assert RedCategory.query.count() == 0
 
     @patch('redberry.blueprint.current_user')
@@ -103,5 +103,5 @@ class AdminRoutesTest(RedTestCase):
         response = self.test_client.post(url, data={'_method': "DELETE"})
         assert response.status_code == 302
         assert response.location == 'http://localhost/%s/admin/post' % self.url_prefix
-        self.assert_flashes("Deleted post", 'success')
+        self.assert_flashes("Deleted post")
         assert RedPost.query.count() == 0
