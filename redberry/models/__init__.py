@@ -1,5 +1,8 @@
 from slugify import slugify
 from html5lib_truncation import truncate_html
+from bs4 import BeautifulSoup
+import re
+from string import punctuation as p
 
 from redberry.blueprint import cms
 
@@ -24,6 +27,19 @@ class RedModel(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.flush()
+
+    @staticmethod
+    def strip_tags(text, strip_punctuation=False):
+        # Return only the words from content, stripping punctuation and HTML.
+        soup = BeautifulSoup(text)
+
+        if strip_punctuation:
+            punctuation = re.compile('[{}]+'.format(re.escape(p)))
+            words_only = punctuation.sub('', soup.get_text())
+            return words_only
+
+        words_only = soup.get_text()
+        return words_only
 
     def summarise(self, length=150):
         long_field = None

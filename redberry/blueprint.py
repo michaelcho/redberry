@@ -9,6 +9,18 @@ cms = Blueprint('redberry', __name__, template_folder='templates', static_folder
 cms.config = {}
 
 
+##############
+# Jinja Filters
+###############
+@cms.app_template_filter()
+def pretty_date(dttm):
+    return dttm.strftime("%m/%d")
+
+@cms.app_template_filter()
+def date(dttm):
+    return dttm.strftime('%Y-%m-%d')
+
+
 ########
 # Config
 ########
@@ -52,11 +64,6 @@ def admin_login_required(method):
         return method(*args, **kwargs)
 
     return wrapper
-
-
-@cms.app_template_filter()
-def pretty_date(dttm):
-    return dttm.strftime("%m/%d")
 
 
 ############

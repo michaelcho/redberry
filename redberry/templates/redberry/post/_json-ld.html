@@ -1,0 +1,20 @@
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "{{ post.title }}",
+
+        {% if post.categories %}
+        "genre": "{{ post.categories[0].title | safe }}",
+        {% endif %}
+
+        "keywords": "{{ post.keywords() }}",
+        "wordcount": "{{ post.content | wordcount }}",
+        "url": "{{ request.url }}",
+        "datePublished": "{{ post.created_at | date }}",
+        "dateCreated": "{{ post.created_at | date }}",
+        "dateModified": "{{ post.updated_at | date }}",
+        "description": "{{ post.strip_tags(post.summarise()) }}",
+        "articleBody": "{{ post.strip_tags(post.content) }}"
+    }
+</script>
