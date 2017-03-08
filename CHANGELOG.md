@@ -1,4 +1,7 @@
 __v0.0.7.4 - 2017-03-07__  
+Improve keyword significance for JSON-LD
+
+__v0.0.7.4 - 2017-03-07__  
 Add JSON-LD (http://json-ld.org/) metadata for improved SEO 
 
 __v0.0.7.3 - 2017-03-05__  
