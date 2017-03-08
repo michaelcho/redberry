@@ -1,4 +1,7 @@
-__v0.0.7.4 - 2017-03-07__  
+__v0.0.7.6 - 2017-03-07__  
+Improve keyword significance for JSON-LD
+
+__v0.0.7.5 - 2017-03-07__  
 Improve keyword significance for JSON-LD
 
 __v0.0.7.4 - 2017-03-07__  
