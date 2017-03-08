@@ -1,3 +1,4 @@
+import collections
 from sqlalchemy import event
 
 from redberry.models import db, RedModel, generate_slug
@@ -25,6 +26,26 @@ class RedPost(RedModel):
     @classmethod
     def all_published(cls):
         return cls.query.filter_by(published=True).order_by('created_at DESC').all()
+
+    def keywords(self, num=5):
+
+        words_only = self.strip_tags(self.content, strip_punctuation=True)
+        words = words_only.split()
+
+        counter = collections.Counter(words)
+        common = counter.most_common()
+
+        keywords = []
+        UNIMPORTANT_WORDS = ('a', 'the', 'as', 'be', 'if', 'then', 'when', 'why', 'what', 'so', 'it', 'to', 'just', 'but')
+
+        for word in common:
+            if word[0].lower() not in UNIMPORTANT_WORDS:
+                keywords.append(word[0].lower())
+
+            if len(keywords) >= num:
+                break
+
+        return ", ".join(keywords)
 
 
 event.listen(RedPost.title, 'set', generate_slug, retval=False)

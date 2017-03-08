@@ -1,0 +1,35 @@
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                "@id": "{{ url_for('redberry.home', _external=True) }}",
+                "name": "Home"
+                }
+            },
+
+            {% if post.categories %}
+            {% set post_position = 3 %}
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                "@id": "{{ url_for('redberry.show_category', category_slug=post.categories[0].slug, _external=True) }}",
+                "name": "{{ post.categories[0].title | safe }}"
+            }
+            {% endif %}
+
+            {
+                "@type": "ListItem",
+                "position": {{ post_position | default(2) }},
+                "item": {
+                "@id": "{{ url_for('redberry.show_post', slug=post.slug, _external=True) }}",
+                "name": "{{ post.title | safe }}"
+            }
+        ]
+    }
+</script>

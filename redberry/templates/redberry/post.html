@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
+    {% include "redberry/post/_json-ld.html" %}
+
     {% include "redberry/post/_breadcrumb.html" %}
+    {% include "redberry/post/_breadcrumb-json.html" %}
 
     <div class="container">
         <div id="red-post-id-{{ post.id }}" class="red-post margin-bottom-30">

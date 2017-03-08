@@ -7,6 +7,8 @@
 
 {% block content %}
 
+    {% include "redberry/category/_json-ld.html" %}
+
     {% include "redberry/category/_breadcrumb.html" %}
 
     <div id="red-category-id-{{ category.id }}" class="container red-category">

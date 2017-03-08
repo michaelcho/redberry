@@ -1,0 +1,17 @@
+<script type="application/ld+json">
+    {% for post in category.posts %}
+        {
+            "@context": "http://schema.org",
+            "@type": "Article",
+            "headline": "{{ post.title }}",
+            "genre": "{{ category.title | safe }}",
+            "keywords": "{{ post.keywords() }}",
+            "wordcount": "{{ post.content | wordcount }}",
+            "url": "{{ request.url }}",
+            "datePublished": "{{ post.created_at | date }}",
+            "dateCreated": "{{ post.created_at | date }}",
+            "dateModified": "{{ post.updated_at | date }}",
+            "description": "{{ post.strip_tags(post.summarise()) }}",
+        }
+    {% endfor %}
+</script>
