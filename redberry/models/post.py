@@ -36,11 +36,11 @@ class RedPost(RedModel):
         common = counter.most_common()
 
         keywords = []
-        UNIMPORTANT_WORDS = ('a', 'the', 'as', 'be', 'if', 'then', 'when', 'why', 'what', 'so', 'it', 'to', 'just', 'but')
 
         for word in common:
-            if word[0].lower() not in UNIMPORTANT_WORDS:
-                keywords.append(word[0].lower())
+            lower_word = word[0].lower()
+            if len(lower_word) > 4:
+                keywords.append(lower_word)
 
             if len(keywords) >= num:
                 break
