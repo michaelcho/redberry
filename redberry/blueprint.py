@@ -46,14 +46,13 @@ def init_redberry(state):
     migrator.initialize_samples()
 
 
-def def is_admin(user):
-    if type(user.is_admin) == bool:
-        return user.is_admin
-    else:
-        return user.is_admin()
-
-
 def admin_login_required(method):
+    def is_admin(user):
+        if isinstance(user.is_admin, bool):
+            return user.is_admin
+        else:
+            return user.is_admin()
+
     @functools.wraps(method)
     def wrapper(*args, **kwargs):
         if not current_user.is_authenticated:
