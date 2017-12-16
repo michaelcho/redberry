@@ -2,6 +2,6 @@ flask>=0.11.1
 python-slugify>=1.2.1
 flask-wtf>=0.13.1
 html5lib-truncation==0.1.0
-git+git://github.com/michaelcho/redberry.git#egg=apesmit  # Generate sitemaps
+git+git://github.com/michaelcho/apesmit-py2.git#egg=apesmit  # Generate sitemaps
 html5lib==1.0b8             # Fix bug with BeautifulSoup4, ref http://stackoverflow.com/questions/38447738/beautifulsoup-html5lib-module-object-has-no-attribute-base
 beautifulsoup4==4.4.1       # Generate post keywords
