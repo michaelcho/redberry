@@ -1,7 +1,9 @@
+__v0.0.7.7 - 2017-12-15__  
+Fix requirements.txt file
+
 __v0.0.7.6 - 2017-12-15__  
 Improve keyword significance for JSON-LD  
 Upgraded apesmit dependency
-
 
 __v0.0.7.5 - 2017-03-07__  
 Improve keyword significance for JSON-LD
