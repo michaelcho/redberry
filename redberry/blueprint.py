@@ -47,6 +47,12 @@ def init_redberry(state):
 
 
 def admin_login_required(method):
+    def is_admin(user):
+        if isinstance(user.is_admin, bool):
+            return user.is_admin
+        else:
+            return user.is_admin()
+
     @functools.wraps(method)
     def wrapper(*args, **kwargs):
         if not current_user.is_authenticated:
@@ -54,10 +60,11 @@ def admin_login_required(method):
             return redirect(url_for('redberry.home'))
 
         if not hasattr(current_user, 'is_admin'):
-            flash("Redberry expects your user instance to implement an `is_admin()` method.", 'warning')
+            flash("Redberry expects your user instance to implement an `is_admin` boolean attribute "
+                  "or an `is_admin()` method.", 'warning')
             return redirect(url_for('redberry.home'))
 
-        if not current_user.is_admin():
+        if not is_admin(current_user):
             flash("This section is for admin users only.", 'warning')
             return redirect(url_for('redberry.home'))
 

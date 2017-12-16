@@ -42,6 +42,9 @@ setup(
     tests_require=test_requirements,
     packages=find_packages(),
 
+    # Required as apesmit dependency cannot be downloaded via http
+    dependency_links=['https://github.com/michaelcho/apesmit-py2/tarball/master#egg=apesmit'],
+
     # Includes templates and static files in MANIFEST.in
     include_package_data=True,
 

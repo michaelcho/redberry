@@ -24,7 +24,14 @@ from redberry.blueprint import cms
 # Pass a SQLAlchemy object as db
 app.config['redberry.config'] = {'db': db}
 
-# Set the url_prefix for where your CMS should be served from
+## EITHER
+## If you create your db object using `db.init_app(app)` you will need:
+with app.app_context():
+    # Set the url_prefix for where your CMS should be served from
+    app.register_blueprint(cms, url_prefix='/content')
+
+## OR
+## If you create your db object using `db = SQLAlchemy(app, session_options={...})`
 app.register_blueprint(cms, url_prefix='/blog')
 
 ....

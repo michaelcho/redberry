@@ -37,9 +37,11 @@ class RedPost(RedModel):
 
         keywords = []
 
+        INSIGNIFICANT_WORDS = ('should', 'which', 'therefore')
+
         for word in common:
             lower_word = word[0].lower()
-            if len(lower_word) > 4:
+            if len(lower_word) > 4 and lower_word not in INSIGNIFICANT_WORDS:
                 keywords.append(lower_word)
 
             if len(keywords) >= num:
