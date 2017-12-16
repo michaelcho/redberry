@@ -1,3 +1,6 @@
+__v0.0.7.7 - TBC__  
+... add notes here ...
+
 __v0.0.7.6 - 2017-12-15__  
 Improve keyword significance for JSON-LD  
 Upgraded apesmit dependency
