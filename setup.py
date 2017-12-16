@@ -21,7 +21,11 @@ def parse_requirements(test_requirements=False):
         if not package:
             break
 
-        packages.append(package)
+        # For editable packages with direct github links
+        if '#egg=' in package:
+            packages.append(package.split("#egg=", 1)[-1])
+        else:
+            packages.append(package)
 
     return packages
 
