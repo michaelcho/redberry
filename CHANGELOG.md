@@ -1,3 +1,6 @@
+__v0.0.7.8 - TBC__  
+... add notes here ...
+
 __v0.0.7.7 - 2017-12-15__  
 Fix requirements.txt file
 
