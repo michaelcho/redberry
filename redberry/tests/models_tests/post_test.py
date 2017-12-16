@@ -10,4 +10,4 @@ class RedPostTest(RedTestCase):
 
     def test_keywords(self):
         post = RedPost.query.first()
-        assert post.keywords() == 'never, anybody, hurt, start, berry'
+        assert post.keywords() == 'never, anybody, start, berry, small'
