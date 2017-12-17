@@ -8,7 +8,7 @@ class RedVersion(RedModel):
     __tablename__ = 'redberry_versions'
     id = db.Column(db.Integer, primary_key=True)
     version = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, server_default=db.func.current_timestamp())
+    created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
 
     @classmethod
     def last(cls):
