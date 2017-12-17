@@ -1,3 +1,6 @@
+__v0.0.7.11 - TBC__  
+... add notes here ...
+
 __v0.0.7.10 - 2017-12-16__  
 Updated apesmit package name to apesmit-python2
 
