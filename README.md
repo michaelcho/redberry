@@ -99,13 +99,8 @@ To update the package:
 - run tests
 - bump VERSION
 - update CHANGELOG.txt
-- `rm dist/*`
-- `python setup.py sdist`
-- `python setup.py bdist_wheel`
-- `twine upload dist/*`
-- `git tag v0.0.7.6` (or new version)
-- `git push --tags`
-- Manually pull request dev/0.0.7.6 branch and merge to master on Github
+- `./distribute.sh`
+- Manually pull request dev/0.0.7.6 (or latest version) branch and merge to master on Github
 - `git checkout master`
 - `git pull origin master`
 - `git push origin :dev/0.0.7.6`
