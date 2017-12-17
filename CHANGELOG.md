@@ -1,3 +1,6 @@
+__v0.0.7.12 - TBC__  
+... add notes here ...
+
 __v0.0.7.11 - 2017-12-16__  
 Fix migrations
 
