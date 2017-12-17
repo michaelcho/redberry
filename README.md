@@ -100,8 +100,7 @@ To update the package:
 - bump VERSION
 - update CHANGELOG.txt
 - `rm dist/*`
-- `python setup.py sdist`
-- `python setup.py bdist_wheel`
+- `python setup.py sdist bdist_wheel`
 - `twine upload dist/*`
 - `git tag v0.0.7.6` (or new version)
 - `git push --tags`

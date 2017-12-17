@@ -21,11 +21,7 @@ def parse_requirements(test_requirements=False):
         if not package:
             break
 
-        # For editable packages with direct github links
-        if '#egg=' in package:
-            packages.append(package.split("#egg=", 1)[-1])
-        else:
-            packages.append(package)
+        packages.append(package)
 
     return packages
 
@@ -45,9 +41,6 @@ setup(
     install_requires=requirements,
     tests_require=test_requirements,
     packages=find_packages(),
-
-    # Required as apesmit dependency cannot be downloaded via http
-    dependency_links=['https://github.com/michaelcho/apesmit-py2/tarball/master#egg=apesmit'],
 
     # Includes templates and static files in MANIFEST.in
     include_package_data=True,
