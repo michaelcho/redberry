@@ -9,8 +9,8 @@ class RedCategory(RedModel):
     title = db.Column(db.String(255))
     slug = db.Column(db.String(255))
     description = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, server_default=db.func.current_timestamp())
-    updated_at = db.Column(db.DateTime, server_default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
+    updated_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     @classmethod
     def sorted(cls):

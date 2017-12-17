@@ -95,6 +95,9 @@ If you want to run unit tests locally:
 
  
 ### Developer Notes
+To test locally without requiring package distribution:
+- `export PYTHONPATH=$PYTHONPATH:/path/to/redberry`
+
 To update the package:
 - run tests
 - bump VERSION
