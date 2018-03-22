@@ -3,6 +3,7 @@
 {% block head %}
     <title>Admin</title>
     <link href="https://cdn.quilljs.com/1.1.8/quill.snow.css" rel="stylesheet">
+    <link href="{{ url_for('redberry.static', filename='css/trumbowyg.min.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block admin_content %}
@@ -40,5 +41,10 @@
 {% endblock %}
 
 {% block javascript %}
+<script type="text/javascript" src="{{ url_for('redberry.static', filename='js/trumbowyg.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('redberry.static', filename='js/trumbowyg.preformatted.min.js')}}"></script>
 <script type="text/javascript" src="{{ url_for('redberry.static', filename='js/redberry_admin.js')}}"></script>
+<script type="text/javascript">
+    $.trumbowyg.svgPath = "{{ url_for('redberry.static', filename='svg/icons.svg') }}"
+</script>
 {% endblock %}

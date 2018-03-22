@@ -25,8 +25,8 @@ echo "======"
 echo "Bumping from $VERSION to $NEXT_VERSION ...."
 
 git push origin :dev/$VERSION
-git branch -D dev/$VERSION
 git checkout -b dev/$NEXT_VERSION
+git branch -D dev/$VERSION
 echo "$NEXT_VERSION" > VERSION
 echo -e "__v$NEXT_VERSION - TBC__  \n... add notes here ...\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
 git commit -am "start $NEXT_VERSION"
