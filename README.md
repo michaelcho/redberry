@@ -103,6 +103,7 @@ To update the package:
 - bump VERSION
 - update CHANGELOG.txt
 - Manually pull request dev/0.0.7.6 (or latest version) branch and merge to master on Github
+- checkout to master and pull locally
 - `./distribute.sh`
 
 
