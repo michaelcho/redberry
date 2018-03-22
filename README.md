@@ -95,20 +95,16 @@ If you want to run unit tests locally:
 
  
 ### Developer Notes
+To test locally without requiring package distribution:
+- `export PYTHONPATH=$PYTHONPATH:/path/to/redberry`
+
 To update the package:
 - run tests
 - bump VERSION
 - update CHANGELOG.txt
-- `./distribute.sh`
 - Manually pull request dev/0.0.7.6 (or latest version) branch and merge to master on Github
-- `git checkout master`
-- `git pull origin master`
-- `git push origin :dev/0.0.7.6`
-- `git branch -D dev/0.0.7.6`
-- `git checkout -b dev/0.0.7.7`
-- bump VERSION and CHANGELOG.txt in preparation
-- `git commit -am "start 0.0.7.7`
-- `git push`
+- `./distribute.sh`
+
 
 
 

@@ -18,8 +18,8 @@ class RedPost(RedModel):
     content = db.Column(db.Text)
     summary = db.Column(db.Text)
     published = db.Column(db.Boolean, default=True, index=True)
-    created_at = db.Column(db.DateTime, server_default=db.func.current_timestamp())
-    updated_at = db.Column(db.DateTime, server_default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
+    updated_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     categories = db.relationship("RedCategory", secondary=categories_posts, backref='posts')
 

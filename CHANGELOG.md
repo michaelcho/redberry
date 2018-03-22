@@ -1,7 +1,7 @@
 __v0.0.7.12 - 2018-03-21__
 Change rich editor from Quill to Trumbowyg  
 
-__v0.0.7.11 - 2017-12-16__
+__v0.0.7.11 - 2017-12-16__  
 Fix migrations
 
 __v0.0.7.10 - 2017-12-16__  
