@@ -14,6 +14,7 @@ var RedberryAdmin = {
                 ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
                 ['unorderedList', 'orderedList'],
                 ['horizontalRule'],
+                ['table'],
                 ['fullscreen']
             ],
             autogrow: true

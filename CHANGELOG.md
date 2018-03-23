@@ -1,3 +1,6 @@
+__v0.0.7.13 - 2018-03-23__  
+Add support for tables
+
 __v0.0.7.12 - 2018-03-21__
 Change rich editor from Quill to Trumbowyg  
 
