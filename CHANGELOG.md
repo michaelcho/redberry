@@ -1,3 +1,6 @@
+__v0.0.7.15 - TBC__  
+... add notes here ...
+
 __v0.0.7.14 - 2018-05-29__  
 Add hero image for blog posts
 Support passing in meta title by config
