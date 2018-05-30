@@ -1,3 +1,7 @@
+__v0.0.7.14 - 2018-05-29__  
+Add hero image for blog posts
+Support passing in meta title by config
+
 __v0.0.7.13 - 2018-03-23__  
 Add support for tables
 

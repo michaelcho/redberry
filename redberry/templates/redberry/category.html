@@ -21,20 +21,7 @@
         {% endif %}
 
         {% for post in category.posts %}
-            <div class="col-md-4">
-                <div class="red-post panel">
-                    <h3>
-                        <a href="{{ url_for('redberry.show_post', slug=post.slug) }}">{{ post.title }}</a>
-                    </h3>
-
-                    {{ post.summarise() | safe }}
-
-
-                    <a class="btn btn-primary btn-lg red-post-more" href="{{ url_for('redberry.show_post', slug=post.slug) }}">
-                        Read More
-                    </a>
-                </div>
-            </div>
+            {% include "redberry/_post.html" %}
         {% endfor %}
 
     </div>

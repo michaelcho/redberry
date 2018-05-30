@@ -1,0 +1,26 @@
+<div class="col-md-6">
+    <div class="red-post">
+        <a href="{{ url_for('redberry.show_post', slug=post.slug) }}">
+            {% if post.hero_image %}
+                <div class="hero-image" style="background-image: url({{ post.hero_image }})"></div>
+            {% else %}
+                <div class="hero-image"></div>
+            {% endif %}
+
+            <h3>{{ post.title }}</h3>
+        </a>
+
+        {% if post.categories %}
+            <p>
+                {% for category in post.categories %}
+                    <a class="label label-success" href="{{ url_for('redberry.show_category', category_slug=category.slug) }}">{{ category.title }}</a>
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        <div>
+            {{ post.summarise() | safe }}
+        </div>
+
+    </div>
+</div>

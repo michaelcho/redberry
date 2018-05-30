@@ -6,7 +6,12 @@ from flask.ext.login import current_user
 REDBERRY_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 cms = Blueprint('redberry', __name__, template_folder='templates', static_folder='static/redberry')
-cms.config = {}
+cms.config = {
+    'db': None,
+    'meta': {
+        'title': None
+    }
+}
 
 
 ##############
@@ -36,6 +41,7 @@ def init_redberry(state):
         raise Exception("Redberry expects you to provide an SQLAlchemy object in redberry.config['db']")
 
     cms.config['db'] = config['db']
+    cms.config['meta']['title'] = config.get('title') or "Redberry CMS - a Flask blog blueprint"
 
     from redberry.utils.logger import init_logger
     init_logger()
@@ -230,5 +236,7 @@ def render_redberry(template_name, **kwargs):
     # For Accelerated Mobile Pages (AMP, ref: https://www.ampproject.org) use templates with a .amp suffix
     if '.amp' in request.path:
         kwargs['render_amp'] = True
+
+    kwargs['meta'] = cms.config['meta']
 
     return render_template(template_name, **kwargs)

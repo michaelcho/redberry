@@ -25,6 +25,14 @@
                 {% endfor %}
             </div>
 
+            {% if post.hero_image %}
+            <div class="row margin-bottom-30">
+                <div class="col-md-offset-2 col-md-8">
+                    <img src="{{ post.hero_image }}" />
+                </div>
+            </div>
+            {% endif %}
+
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
                    {{ post.content|safe }}

@@ -76,6 +76,7 @@ ol.breadcrumb { background: none; margin: 30px auto; list-style: none; }
 
 svg#svg-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
 
+
 /* ------- CMS-Specific --------*/
 .red-post {
     background: #fff;
@@ -84,10 +85,13 @@ svg#svg-definitions { position: absolute; width: 0; height: 0; overflow: hidden;
     position: relative;
     font-size: 18px;
     line-height: 1.5em;
+    margin-bottom: 40px;
+    overflow: hidden;
 }
-    .red-post h3 { margin: 10px auto; }
+    .red-post h3 { margin: 10px auto; line-height: 1.4em; }
     .red-post.panel { height: 350px; }
     .red-post-more { position: absolute; bottom: 20px; left: 20px; right: 20px }
+    .red-post .hero-image { max-width: 100%; height: 285px; background-size: cover; background-color: #EFF2F7;}
 
     .red-post .category-label { margin-right: 5px; }
 
