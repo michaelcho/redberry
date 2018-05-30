@@ -1,3 +1,6 @@
+__v0.0.7.16 - TBC__  
+... add notes here ...
+
 __v0.0.7.15 - 2018-05-29__  
 Fix image css
 
