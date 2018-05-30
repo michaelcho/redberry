@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Title</th>
+                <th>Image</th>
                 <th>Summary</th>
                 <th>Published</th>
                 <th>Created</th>
@@ -27,8 +27,19 @@
             {% for post in objects %}
                 <tr>
                     <td>{{ post.id }}</td>
-                    <td><a href="{{ url_for('redberry.show_post', slug=post.slug) }}" target="_blank">{{ post.title }}</a></td>
-                    <td>{{ post.summary | safe }}</td>
+                    <td>
+                        {% if post.hero_image %}
+                            <img src="{{ post.hero_image }}" width="100"/>
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div>
+                            <a href="{{ url_for('redberry.show_post', slug=post.slug) }}" target="_blank">{{ post.title }}</a>
+                        </div>
+                        {{ post.summary | safe }}
+                    </td>
                     <td>{{ macros.true_or_false(post.published) }}</td>
                     <td>{{ post.created_at | pretty_date }}</td>
                     <td>
